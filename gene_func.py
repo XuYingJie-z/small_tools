@@ -3,9 +3,11 @@
 import requests
 from lxml import etree
 import pandas as pd
-import os
+import os, sys
 import time
 from functools import wraps
+import argparse
+import sys
 
 
 def try_list_index(process_list, index):
@@ -130,21 +132,37 @@ def batch_gene_func(request_session, gene_list: list, headers: dict, organism="H
     gene_dunc_dataframe.append(false_gene) # 这句没测试过，不知道会不会报错
     return gene_dunc_dataframe
 
+def get_argparse():
+    description = """ 
+    脚本使用：
+        爬取基因功能的小脚本，使用方法：
+        python gene_func.py -i ./xxx.py -o ./output.py
+        
+     """
+    parser = argparse.ArgumentParser(description=description, formatter_class = argparse.RawTextHelpFormatter)
+    parser.add_argument('-i', '--input', help="输入文件，必须是csv格式，其中SYMBOL列是基因名。示例: ./xxx.csv")
+    parser.add_argument('-o', '--output', help="输出文件，必须是csv格式。示例: ./output.csv")
+    return parser
 
-if __name__ == "__main__":
+
+
+def main():
+    os.chdir(sys.path[0])
+    args = get_argparse().parse_args()
     session = requests.Session()  # session
     firefox_head = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0'
     }
 
-    gene_data = pd.read_csv("./combine_analysis/step1_promoter_hyper_downregulate_gene.csv")
+    gene_data = pd.read_csv(args.input)
     gene_list = gene_data["SYMBOL"]  # 需要查询的gene
-    # gene_dunc_dataframe.to_csv(os.getcwd() + "\\" + "tmp.csv")
+    result = batch_gene_func(session, gene_list, headers=firefox_head, organism="Homo sapiens")
+    result.to_csv(args.output)
 
-    result = batch_gene_func(session, list(set(gene_list) - set(result1["gene_name"])), headers=firefox_head, organism="Homo sapiens")
-    result1 = result1.append(result)
 
-    result1.to_csv("./combine_analysis/step1_promoter_hyper_downregulate_gene_function.csv")
+if __name__ == "__main__":
+    main()
+
 
 # !!!!ConnectionError!!!!
 
