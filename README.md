@@ -10,3 +10,4 @@
     - 对文件和文件夹也都有效
 5. vedio_compress：基于 ffmpeg 的视频压缩脚本，用 tkinker 做了 GUI
 6. get_interval.py ，一个用 numpy 写的区间查找的小工具
+6. BCA_protein.py ： 处理 BCA 蛋白定量的代码，不是直接运行的，放在jupyter跑会更合适
