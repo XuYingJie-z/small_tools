@@ -13,3 +13,4 @@
 6. BCA_protein.py ： 处理 BCA 蛋白定量的代码，不是直接运行的，放在jupyter跑会更合适
 6. pmid_endnote_tools.py : 从 Word XML/DOCX 文件中提取 PMID 占位符(例如[PMID: xxxxx])，并将其替换为 EndNote 引文。可以直接运行，也可以 jupyter 用法在脚本开头。
 7. pdf_to_md.py：基于docling 的pdf 提取转换成 markdown，支持设置页眉页脚，适合放在 jupyter 跑，gpu 加速很重要，适合 colab，不需要很好的显卡
+8. sanger_seq_phase.R : R 语言处理 sanger 一代测序鉴定基因型的问题，因为很多杂合需要拆链。可以 R 语言直接运行，也可以 jupyter，使用方法在文件内开头
