@@ -4,7 +4,11 @@
 
 Examples
 --------
+  ## 包含两步，
+  # 第一步先提取出 Pubmed id，然后用这个 id list 去 pubmed 下载引用文件，导入到 endnote
   python pmid_endnote_tools.py extract input.docx -o pubmed_query.txt --list-output pmids.txt
+  
+  # 从 end note 中导出 pubmed id 和 endnote 引文格式的对照表 endnote_mapping.csv，替换为 endnote 引文格式
   python pmid_endnote_tools.py replace input.xml endnote_mapping.csv -o input_endnote.xml
 
 Notes
