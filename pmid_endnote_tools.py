@@ -6,9 +6,10 @@ Examples
 --------
   ## 包含两步，
   # 第一步先提取出 Pubmed id，然后用这个 id list 去 pubmed 下载引用文件，导入到 endnote
-  python pmid_endnote_tools.py extract input.docx -o pubmed_query.txt --list-output pmids.txt
+  python pmid_endnote_tools.py extract input.docx -o pubmed_query.txt --list-output pubmed_query_list.txt
   
   # 从 end note 中导出 pubmed id 和 endnote 引文格式的对照表 endnote_mapping.csv，替换为 endnote 引文格式
+  # endnote_mapping.csv 就是一列 PMID，一列是 {Schwartz, 1990 #11} 这样的 csv 文件。需要在 endnote style 中新建一个格式，然后用这个格式导出对照表。可以问AI，B 站也有视频
   python pmid_endnote_tools.py replace input.xml endnote_mapping.csv -o input_endnote.xml
 
 Notes
