@@ -9,7 +9,8 @@ Examples
   python pmid_endnote_tools.py extract input.docx -o pubmed_query.txt --list-output pubmed_query_list.txt
   
   # 从 end note 中导出 pubmed id 和 endnote 引文格式的对照表 endnote_mapping.tsv，替换为 endnote 引文格式
-  # endnote_mapping.csv 就是一列 PMID，一列是 {Schwartz, 1990 #11} 这样的 tsv 文件 (尽量不要用 csv 逗号分隔)。需要在 endnote style 中新建一个格式，然后用这个格式导出对照表。可以问AI，B 站也有视频
+  # endnote_mapping.csv 就是一列 PMID，一列是 {Schwartz, 1990 #11} 这样的 tsv 文件 (尽量不要用 csv 逗号分隔)。需要在 endnote output style 中新建一个格式，然后全选文献库里的文献，用这个格式导出对照表。
+  # 这个仓库里有个 pubmed_endnote_map.ens ，这个就是建立好的 output style, 下载下来拖进 endnote ，然后 save 成新的 output style 即可
   python pmid_endnote_tools.py replace input.docx  endnote_mapping.csv -o  input_ref.docx 
 
 Notes
