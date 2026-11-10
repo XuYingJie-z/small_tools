@@ -1,0 +1,14 @@
+
+# 排除数据库文件
+sync_state.sqlite3
+sync_state.sqlite3-shm
+sync_state.sqlite3-wal
+msal_token_cache.json
+__pycache__/
+*.pyc
+
+# 忽略所有以点开头的文件和目录
+.*
+
+# 允许 .gitignore 文件
+!.gitignore

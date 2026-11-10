@@ -1,0 +1,41 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/dssg/home/acct-bioxsyy/bioxsyy-xyj/xyj/software/uv_env/pdf_process/.venv/bin/python /dssg/home/acct-bioxsyy/bioxsyy-xyj/xyj/software/wechat_notify/codex_wechat_hook.py",
+            "async": true,
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/dssg/home/acct-bioxsyy/bioxsyy-xyj/xyj/software/uv_env/pdf_process/.venv/bin/python /dssg/home/acct-bioxsyy/bioxsyy-xyj/xyj/software/wechat_notify/codex_wechat_hook.py",
+            "async": true,
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "request_user_input(_async)?$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/dssg/home/acct-bioxsyy/bioxsyy-xyj/xyj/software/uv_env/pdf_process/.venv/bin/python /dssg/home/acct-bioxsyy/bioxsyy-xyj/xyj/software/wechat_notify/codex_wechat_hook.py",
+            "async": true,
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

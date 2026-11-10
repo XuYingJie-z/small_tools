@@ -1,0 +1,33 @@
+{
+  "default_event_duration_minutes": 60,
+  "notion_all_day_end_is_inclusive": true,
+  "sources": [
+    {
+      "name": "工作任务",
+      "data_source_id": "粘贴第一个 Notion data source ID",
+      "title_property": "名称",
+      "date_property": "日期",
+      "status_property": "状态",
+      "cancelled_values": ["取消", "已取消", "Canceled"],
+      "description_property": "备注",
+      "location_property": "地点",
+      "title_prefix": "[工作] ",
+      "show_as": "busy",
+      "sensitivity": "normal",
+      "categories": [],
+      "sync_only_when": {
+        "property": "同步到 Outlook",
+        "equals": true
+      }
+    },
+    {
+      "name": "个人日程",
+      "data_source_id": "粘贴第二个 Notion data source ID",
+      "title_property": "日程",
+      "date_property": "时间",
+      "status_property": "状态",
+      "cancelled_values": ["取消", "已取消"],
+      "title_prefix": "[个人] "
+    }
+  ]
+}
