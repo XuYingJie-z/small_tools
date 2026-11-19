@@ -8,12 +8,30 @@ import sqlite3
 import subprocess
 import sys
 from collections import defaultdict
+from contextlib import contextmanager
 from pathlib import Path
+
+
+@contextmanager
+def open_rollout(path):
+    if path.suffix != ".zst":
+        with path.open(encoding="utf-8") as stream:
+            yield stream
+        return
+
+    try:
+        decoder = subprocess.Popen(["zstd", "-qdc", "--", path],
+                                   stdout=subprocess.PIPE, encoding="utf-8")
+    except FileNotFoundError:
+        sys.exit("读取 .jsonl.zst 会话需要在 PATH 中安装 zstd。")
+    # 提前找到元数据或首条提问时，先关闭管道，再等待解压进程退出。
+    with decoder, decoder.stdout as stream:
+        yield stream
 
 
 def first_meta(path):
     try:
-        with path.open(encoding="utf-8") as f:
+        with open_rollout(path) as f:
             for _ in range(10):
                 line = f.readline()
                 if not line:
@@ -28,7 +46,7 @@ def first_meta(path):
 
 def first_user_prompt(path):
     try:
-        with path.open(encoding="utf-8") as f:
+        with open_rollout(path) as f:
             for line in f:
                 try:
                     item = json.loads(line)
@@ -100,9 +118,13 @@ def main():
         folder = home / dirname
         if not folder.exists():
             continue
-        for path in folder.rglob("*.jsonl"):
+        for path in folder.rglob("*.jsonl*"):
+            if not path.name.endswith((".jsonl", ".jsonl.zst")):
+                continue
             meta = first_meta(path)
             if not meta or not meta.get("id"):
+                if path.name.startswith("rollout-"):
+                    print(f"未读到会话元数据，已跳过 {path}", file=sys.stderr)
                 continue
             tid = str(meta["id"])
             try:

@@ -1,13 +1,13 @@
 # codex 会用到的小工具
 
-### codex_tree.py
+### codex_fork_tree.py
 
 - 查询和删除 session 树。删除 session 报错时会用
-    - ~/xyj/software/codex_tools/codex_tree.py   我放在这里了
-    - 用法：`python3 ~/xyj/software/codex_tools/codex_tree.py 01a1caf6-30fd-7713-b842-c944eacc8afb` 
+    - ~/xyj/software/codex_tools/codex_fork_tree.py   我放在这里了
+    - 用法：`python3 ~/xyj/software/codex_tools/codex_fork_tree.py 01a1caf6-30fd-7713-b842-c944eacc8afb` 
 
     ```python
-    python3 ~/xyj/software/codex_tools/codex_tree.py 01a1caf6-30fd-7713-b842-c944eacc8afb
+    python3 ~/xyj/software/codex_tools/codex_fork_tree.py 01a1caf6-30fd-7713-b842-c944eacc8afb
     01a1c09e-5e46-7532-954c-f81977daee9b  [评估 Milo 分析细胞比例差异]
     └── 01a1caf6-30fd-7713-b842-c944eacc8afb  [Milo 在 pollen 数据中的情况]  <-- TARGET
         ├── 01a1ceec-3f08-7ed0-8726-3c683f73094a  [pollen 数据中的基本情况]
@@ -16,14 +16,14 @@
         └── 01a1d043-abed-7b60-8b2b-76d6ad5c68d0  [milo算法]
 
     ## 预览要删除的节点
-    python3 ~/xyj/software/codex_tools/codex_tree.py 01a1ceec-3f08-7ed0-8726-3c683f73094a --delete-tree 
+    python3 ~/xyj/software/codex_tools/codex_fork_tree.py 01a1ceec-3f08-7ed0-8726-3c683f73094a --delete-tree 
     当前树中待删除的会话（共 2 个，按执行顺序）：
     1. 01a1e800-f725-7461-8ce5-d4f70845bacf  [pollen 数据中的基本情况]
     2. 01a1ceec-3f08-7ed0-8726-3c683f73094a  [pollen 数据中的基本情况]
     本次仅预览。确认后在同一命令末尾加 --apply 执行。
 
     ## 执行删除节点
-    python3 ~/xyj/software/codex_tools/codex_tree.py 01a1ceec-3f08-7ed0-8726-3c683f73094a --delete-tree --apply
+    python3 ~/xyj/software/codex_tools/codex_fork_tree.py 01a1ceec-3f08-7ed0-8726-3c683f73094a --delete-tree --apply
 
     ```
 
